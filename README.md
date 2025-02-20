@@ -40,8 +40,8 @@ To get started, clone the repository and run the application:
 
 ```bash
 # Clone the repository
-git clone <REPOSITORY_URL>
-cd <REPOSITORY_NAME>
+git clone https://github.com/AmplifySoftware/frontend-junior-react-test.git
+cd frontend-junior-react-test
 
 # Install dependencies
 npm install
