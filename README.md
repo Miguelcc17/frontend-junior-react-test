@@ -47,7 +47,7 @@ cd frontend-junior-react-test
 npm install
 
 # Run the application
-npm start
+npm dev
 ```
 
 ## API
