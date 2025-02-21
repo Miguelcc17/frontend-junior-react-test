@@ -6,25 +6,34 @@ import './App.css'
 
 function App() {
   const [data, setData] = useState([])
+  const [search, setSearch] = useState('')
 
-  useEffect(() => {
-    const fetchData = async () =>{
+    const fetchData = async (query = '') =>{
       try {
-        const {data: response} = await axios.get('https://rickandmortyapi.com/api/character');
+        const {data: response} = await axios.get(`https://rickandmortyapi.com/api/character?name=${query}`);
         setData(response.results);
-        console.log(response);
       } catch (error) {
         console.error(error.message);
       }
     }
 
-    fetchData();
+    useEffect(() => {
+        fetchData()
   }, []);
 
+  const searchInput = (e) => {
+    const {value} = e.target;
+    setSearch(value);
+    fetchData(value);
+  }
   return (
     <>
       <div className='Container'>
         <h1>Personajes Rick & Morty</h1>
+        <div className='row mb-4'>
+        <input type="text" className="form-control" value={search} onChange={searchInput}></input>
+
+        </div>
         <div className='row'>
           {data.map(item => (
             <div className="card" style={{width: '18rem'}}>
@@ -38,7 +47,7 @@ function App() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
